@@ -105,7 +105,19 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     """
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            print(out_file, "%s %d %s %f" % (obj.type, obj.color, obj.m, obj.x, obj.y,obj.Vx, obj.Vy))
+            print(out_file, '%s %d %s %f' % (obj.type, obj.color, obj.m, obj.x, obj.y, obj.Vx, obj.Vy))
+
+def save_statistic_to_file (output_filename,space_objects, dt):
+     """Сохраняет сатистические данные о космических объектах в файл.
+    **output_filename** — имя входного файла
+    **space_objects** — список объектов планет и звёзд
+    """
+     for obj in space_objects:
+        modul_Vx = obj.Vx
+        modul_Vy = obj.Vy
+        modul_s =((obj.Vx*dt)**2 +(obj.Vy*dt)**2)**0.5
+     with open(output_filename, 'w') as out_file:
+             print('%s %d %s %f' % (modul_Vx, modul_Vy, modul_s))
 
 
 
